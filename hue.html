@@ -1,0 +1,34 @@
+<head>
+  <title>hello</title>
+</head>
+
+<body>
+  <h1>Hue with Meteor!</h1>
+  {{> bridge}}
+  {{> lights}}
+{{>lightList}}
+</body>
+
+<template name="bridge">
+  <button class="findIP">Find IP</button>
+  <p>It looks like your bridge IP is: {{bridge}} </p>
+    <button class = "getLights">Get Lights</button>
+
+    {{lightsCount}} lights found!
+
+</template>
+
+<template name="lights">
+{{#if newUser}}<button class="newUser">Initial Setup</button>{{/if}}
+</template>
+
+<template name="lightList">
+    <button class="allon">All On</button><button class="alloff">All Off</button>
+    <ul>
+        {{#each lightList}}
+            <li>Name: {{name}} <button class="thison">On</button><button class="thisoff">Off</button>
+                <input class="brightness-range" type="range" name="brightness" min="0" max="254"></li>
+        {{/each}}
+    </ul>
+    <p>{{debug}}</p>
+</template>
