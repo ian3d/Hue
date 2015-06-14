@@ -1,0 +1,28 @@
+<template name="lightlist">
+    {{#contentFor "headerTitle"}}
+        <h1 class="title">Light List</h1>
+    {{/contentFor}}
+
+    {{#contentFor "headerButtonRight"}}
+        {{#if newUser}}<button class="newUser">Initial Setup</button>{{/if}}
+    {{/contentFor}}
+
+    {{#ionView}}
+        {{#ionContent}}
+            {{> bridge}}
+            <button class="allon button">All On</button><button class="alloff button">All Off</button>
+            {{#ionList}}
+                {{#each lightlist}}
+                    {{#ionItem path="light" iconRight=true}}
+                        {{name}} <button class="thison button">On</button><button class="thisoff button">Off</button>
+                        <input class="brightness-range" type="range" name="brightness" min="0" max="254">
+                        {{> ionIcon icon="ios-arrow-right"}}
+                    {{/ionItem}}
+                {{/each}}
+            {{/ionList}}
+
+
+        <p>{{debug}}</p>
+    {{/ionContent}}
+    {{/ionView}}
+</template>

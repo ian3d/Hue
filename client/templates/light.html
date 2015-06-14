@@ -1,0 +1,23 @@
+<template name="light">
+    {{#contentFor "headerButtonLeft"}}
+        {{>ionNavBackButton path="lightlist"}}
+    {{/contentFor}}
+
+    {{#contentFor "headerTitle"}}
+        <h1 class="title">{{light.name}}</h1>
+    {{/contentFor}}
+
+    {{#ionView}}
+        {{#ionContent class="padding light-detail"}}
+            <button class="thison button">On</button><button class="thisoff button">Off</button>
+            <br><label>Brighness:</label>
+            <br><input class="brightness-range" type="range" name="brightness" min="0" max="254">
+            <br><label>Hue:</label>
+            <br><input class="hue-range" type="range" name="hue" min="0" max="65535">
+            <br><label>Saturation:</label>
+            <br><input class="sat-range" type="range" name="sat" min="0" max="254">
+
+            <p>Debug: {{debug}}</p>
+        {{/ionContent}}
+    {{/ionView}}
+</template>

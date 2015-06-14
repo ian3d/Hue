@@ -49,6 +49,14 @@ Meteor.methods({
     setBrightness: function(lightId, brightness) {
         var content = JSON.stringify({bri: parseInt(brightness)});
         return HTTP.put("http://" + bridgeIp + "/api/" + bridgeUser + "/lights/" + lightId + "/state", {content: content});
+    },
+    setHue: function(lightId, hue) {
+        var content = JSON.stringify({hue: parseInt(hue)});
+        return HTTP.put("http://" + bridgeIp + "/api/" + bridgeUser + "/lights/" + lightId + "/state", {content: content});
+    },
+    setSat: function(lightId, sat) {
+        var content = JSON.stringify({sat: parseInt(sat)});
+        return HTTP.put("http://" + bridgeIp + "/api/" + bridgeUser + "/lights/" + lightId + "/state", {content: content});
     }
 })
 
@@ -62,6 +70,10 @@ Meteor.startup(function() {
 
     Meteor.publish("lights", function() {
         return Lights.find({});
-    })
+    });
+
+    Meteor.publish("light", function(id) {
+        return Lights.find({id: id});
+    });
 })
 
